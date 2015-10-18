@@ -36,15 +36,14 @@ class ExoSuit extends PluginBase implements Listener {
 	}
 
 	public function setEnergy($player, $amount) {
-		$energy = new Config($this->getDataFolder() . "Players/" . strtolower($player->getName()), Config::YAML, array(
+		$this->energy = new Config($this->getDataFolder() . "Players/" . strtolower($player->getName()), Config::YAML, array(
 			"Energy" => 30
 		));
-		$energy->set("Energy", $amount);
-		$energy->save();
+		$this->energy->set("Energy", $amount);
+		$this->energy->save();
 	}
 
 	public function getEnergy($player) {
-		$this->energy = $this->getDataFolder() . "Players/" . strtolower($player->getName()) . ".yml";
 		return $this->energy->get("Energy");
 	}
 
